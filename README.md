@@ -1,31 +1,11 @@
-# PyTorch-YOLOv3
+# YOLOv3
 A minimal PyTorch implementation of YOLOv3, with support for training, inference and evaluation.
 
 ## Installation
-##### Clone and install requirements
-    $ git clone https://github.com/eriklindernoren/PyTorch-YOLOv3
-    $ cd PyTorch-YOLOv3/
-    $ sudo pip3 install -r requirements.txt
 
 ##### Download pretrained weights
     $ cd weights/
     $ bash download_weights.sh
-
-##### Download COCO
-    $ cd data/
-    $ bash get_coco_dataset.sh
-    
-## Test
-Evaluates the model on COCO test.
-
-    $ python3 test.py --weights_path weights/yolov3.weights
-
-| Model                   | mAP (min. 50 IoU) |
-| ----------------------- |:-----------------:|
-| YOLOv3 608 (paper)      | 57.9              |
-| YOLOv3 608 (this impl.) | 57.3              |
-| YOLOv3 416 (paper)      | 55.3              |
-| YOLOv3 416 (this impl.) | 55.5              |
 
 ## Inference
 Uses pretrained weights to make predictions on images. Below table displays the inference times when using as inputs images scaled to 256x256. The ResNet backbone measurements are taken from the YOLOv3 paper. The Darknet-53 measurement marked shows the inference time of this implementation on my 1080ti card.
@@ -66,9 +46,9 @@ $ python3 train.py --data_config config/coco.data  --pretrained_weights weights/
 #### Training log
 ```
 ---- [Epoch 7/100, Batch 7300/14658] ----
-+------------+--------------+--------------+--------------+
++------------|--------------|--------------|--------------+
 | Metrics    | YOLO Layer 0 | YOLO Layer 1 | YOLO Layer 2 |
-+------------+--------------+--------------+--------------+
++------------|--------------|--------------|--------------+
 | grid_size  | 16           | 32           | 64           |
 | loss       | 1.554926     | 1.446884     | 1.427585     |
 | x          | 0.028157     | 0.044483     | 0.051159     |
@@ -83,7 +63,7 @@ $ python3 train.py --data_config config/coco.data  --pretrained_weights weights/
 | precision  | 0.520000     | 0.300000     | 0.070175     |
 | conf_obj   | 0.599058     | 0.622685     | 0.651472     |
 | conf_noobj | 0.003778     | 0.004039     | 0.004044     |
-+------------+--------------+--------------+--------------+
++------------|--------------|--------------|--------------+
 Total Loss 4.429395
 ---- ETA 0:35:48.821929
 ```
